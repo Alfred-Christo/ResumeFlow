@@ -55,7 +55,7 @@ export default function HomePage() {
             <p className="text-base text-muted-foreground">
               Choose from various templates, customize layouts, and input your details step-by-step. Download your resume in PDF format, ready for job applications.
             </p>
-            <Button asChild className="w-full button-glow">
+            <Button asChild className="w-full button-glow bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary/90 transition-colors shadow-md hover:shadow-xl transform-gpu hover:-translate-y-1 hover:scale-105 duration-200">
               <Link href="/resume-builder">
                 Start Building <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -86,7 +86,7 @@ export default function HomePage() {
             <p className="text-base text-muted-foreground">
               Upload your resume (PDF or DOCX) and receive a comprehensive evaluation. Improve your chances of getting noticed by recruiters with AI-driven insights.
             </p>
-            <Button asChild variant="outline" className="w-full button-glow">
+            <Button asChild className="w-full button-glow bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary/90 transition-colors shadow-md hover:shadow-xl transform-gpu hover:-translate-y-1 hover:scale-105 duration-200">
               <Link href="/resume-evaluator">
                 Evaluate Now <Sparkles className="ml-2 h-4 w-4" />
               </Link>
