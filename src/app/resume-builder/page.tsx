@@ -14,16 +14,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Separator } from '@/components/ui/separator';
 import { Download, PlusCircle, Trash2, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { generateResumePDF } from '@/lib/resume-pdf';
+import { generateResumePDF } from '@/lib/resume-pdf.tsx';
 import type { ResumeData } from '@/lib/types';
 
 const contactSchema = z.object({
   fullName: z.string().min(1, 'Full name is required'),
   email: z.string().email('Invalid email address'),
   phone: z.string().optional(),
-  linkedin: z.string().url('Invalid LinkedIn URL').optional(),
-  github: z.string().url('Invalid GitHub URL').optional(),
-  portfolio: z.string().url('Invalid portfolio URL').optional(),
+  linkedin: z.string().url('Invalid LinkedIn URL').optional().or(z.literal('')),
+  github: z.string().url('Invalid GitHub URL').optional().or(z.literal('')),
+  portfolio: z.string().url('Invalid portfolio URL').optional().or(z.literal('')),
   address: z.string().optional(),
 });
 
@@ -51,7 +51,7 @@ const skillSchema = z.object({
 const projectSchema = z.object({
   name: z.string().min(1, 'Project name is required'),
   description: z.string().min(1, 'Description is required'),
-  link: z.string().url('Invalid project link').optional(),
+  link: z.string().url('Invalid project link').optional().or(z.literal('')),
   technologies: z.string().optional(),
 });
 
@@ -147,6 +147,16 @@ export default function ResumeBuilderPage() {
   const handlePreview = async () => {
     if (!isClient) return;
     const data = form.getValues();
+     // Validate form before generating preview
+    const isValid = await form.trigger();
+    if (!isValid) {
+      toast({
+        title: 'Validation Error',
+        description: 'Please fix the errors in the form before previewing.',
+        variant: 'destructive',
+      });
+      return;
+    }
     try {
       const pdfBlob = await generateResumePDF(data as ResumeData);
       if (resumePreviewUrl) {
