@@ -32,7 +32,8 @@ export default function HomePage() {
       <div className="section-divider" />
 
       <section className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-10">
-        <Card className="card-animate shadow-lg hover:shadow-2xl transition-shadow duration-300 border-0 bg-white/80 dark:bg-card/80">
+        <Card className="card-animate shadow-lg hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 dark:bg-card/80 group relative overflow-hidden hover:scale-[1.025] hover:-translate-y-1 hover:ring-2 hover:ring-primary/20">
+          <span className="absolute -top-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-80 group-hover:scale-110 transition-all duration-500" />
           <CardHeader>
             <div className="flex items-center space-x-3 mb-2">
               <FileText className="h-8 w-8 text-primary" />
@@ -62,7 +63,8 @@ export default function HomePage() {
           </CardContent>
         </Card>
 
-        <Card className="card-animate shadow-lg hover:shadow-2xl transition-shadow duration-300 border-0 bg-white/80 dark:bg-card/80">
+        <Card className="card-animate shadow-lg hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 dark:bg-card/80 group relative overflow-hidden hover:scale-[1.025] hover:-translate-y-1 hover:ring-2 hover:ring-accent/20">
+          <span className="absolute -top-8 -right-8 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-0 group-hover:opacity-80 group-hover:scale-110 transition-all duration-500" />
           <CardHeader>
             <div className="flex items-center space-x-3 mb-2">
               <Sparkles className="h-8 w-8 text-primary" />
