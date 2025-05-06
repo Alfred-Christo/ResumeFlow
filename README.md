@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/file-text.svg" width="64" height="64" alt="ResumeFlow Logo" style="background:white;border-radius:16px;padding:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08);" />
+  <img src="https://raw.githubusercontent.com/github/explore/main/topics/resume/resume.png" width="72" height="72" alt="ResumeFlow Logo" style="background:white;border-radius:16px;padding:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08);" />
 </p>
 
 <h1 align="center">ResumeFlow</h1>
