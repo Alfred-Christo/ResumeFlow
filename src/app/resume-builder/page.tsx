@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { ChangeEvent } from 'react';
@@ -14,7 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Separator } from '@/components/ui/separator';
 import { Download, PlusCircle, Trash2, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { generateResumePDF } from '@/lib/resume-pdf.tsx';
+import { generateResumePDF } from '@/lib/resume-pdf';
 import type { ResumeData } from '@/lib/types';
 
 const contactSchema = z.object({
@@ -77,10 +78,28 @@ const defaultValues: ResumeFormValues = {
     address: '',
   },
   summary: '',
-  experience: [{ jobTitle: '', company: '', startDate: '', description: '' }],
-  education: [{ degree: '', institution: '', graduationDate: '' }],
+  experience: [{ 
+    jobTitle: '', 
+    company: '', 
+    location: '', 
+    startDate: '', 
+    endDate: '', 
+    description: '' 
+  }],
+  education: [{ 
+    degree: '', 
+    institution: '', 
+    location: '', 
+    graduationDate: '', 
+    details: '' 
+  }],
   skills: [{ name: '' }],
-  projects: [{ name: '', description: '' }],
+  projects: [{ 
+    name: '', 
+    description: '', 
+    link: '', 
+    technologies: '' 
+  }],
 };
 
 export default function ResumeBuilderPage() {
@@ -307,7 +326,7 @@ export default function ResumeBuilderPage() {
                         <Button type="button" variant="destructive" size="sm" onClick={() => removeExperience(index)}><Trash2 className="mr-2 h-4 w-4" /> Remove</Button>
                       </Card>
                     ))}
-                    <Button type="button" variant="outline" onClick={() => appendExperience({ jobTitle: '', company: '', startDate: '', description: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Experience</Button>
+                    <Button type="button" variant="outline" onClick={() => appendExperience({ jobTitle: '', company: '', location: '', startDate: '', endDate: '', description: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Experience</Button>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -335,7 +354,7 @@ export default function ResumeBuilderPage() {
                         <Button type="button" variant="destructive" size="sm" onClick={() => removeEducation(index)}><Trash2 className="mr-2 h-4 w-4" /> Remove</Button>
                       </Card>
                     ))}
-                    <Button type="button" variant="outline" onClick={() => appendEducation({ degree: '', institution: '', graduationDate: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Education</Button>
+                    <Button type="button" variant="outline" onClick={() => appendEducation({ degree: '', institution: '', location: '', graduationDate: '', details: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Education</Button>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -376,7 +395,7 @@ export default function ResumeBuilderPage() {
                         <Button type="button" variant="destructive" size="sm" onClick={() => removeProject(index)}><Trash2 className="mr-2 h-4 w-4" /> Remove</Button>
                       </Card>
                     ))}
-                    <Button type="button" variant="outline" onClick={() => appendProject({ name: '', description: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Project</Button>
+                    <Button type="button" variant="outline" onClick={() => appendProject({ name: '', description: '', link: '', technologies: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Project</Button>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
@@ -416,3 +435,4 @@ export default function ResumeBuilderPage() {
     </div>
   );
 }
+
