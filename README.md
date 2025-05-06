@@ -51,8 +51,8 @@ $ npm run dev
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/placeholder/resumeflow-light.png" width="400" alt="ResumeFlow Light Mode" />
-  <img src="https://user-images.githubusercontent.com/placeholder/resumeflow-dark.png" width="400" alt="ResumeFlow Dark Mode" />
+  <img src="images/ui-l.png" width="400" alt="ResumeFlow Light Mode" />
+  <img src="images/ui-d.png" width="400" alt="ResumeFlow Dark Mode" />
 </p>
 
 ---
