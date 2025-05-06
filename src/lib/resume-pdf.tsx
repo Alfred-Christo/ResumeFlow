@@ -215,9 +215,23 @@ const ResumeDocument: React.FC<{ data: ResumeData }> = ({ data }) => (
 
 export const generateResumePDF = async (data: ResumeData): Promise<Blob> => {
   if (typeof window === 'undefined') {
-    // This function should only run on the client-side
     throw new Error('PDF generation can only occur in the browser.');
   }
-  const blob = await pdf(<ResumeDocument data={data} />).toBlob();
+  // Defensive: Ensure required fields exist
+  if (!data.contact || typeof data.contact !== 'object') {
+    throw new Error('Resume data is missing contact information.');
+  }
+  if (!data.contact.fullName || !data.contact.email) {
+    throw new Error('Full name and email are required in contact information.');
+  }
+  // Ensure all arrays are defined
+  const safeData: ResumeData = {
+    ...data,
+    experience: data.experience ?? [],
+    education: data.education ?? [],
+    skills: data.skills ?? [],
+    projects: data.projects ?? [],
+  };
+  const blob = await pdf(<ResumeDocument data={safeData} />).toBlob();
   return blob;
 };

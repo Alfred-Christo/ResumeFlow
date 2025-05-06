@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ChangeEvent } from 'react';
@@ -78,28 +77,10 @@ const defaultValues: ResumeFormValues = {
     address: '',
   },
   summary: '',
-  experience: [{ 
-    jobTitle: '', 
-    company: '', 
-    location: '', 
-    startDate: '', 
-    endDate: '', 
-    description: '' 
-  }],
-  education: [{ 
-    degree: '', 
-    institution: '', 
-    location: '', 
-    graduationDate: '', 
-    details: '' 
-  }],
-  skills: [{ name: '' }],
-  projects: [{ 
-    name: '', 
-    description: '', 
-    link: '', 
-    technologies: '' 
-  }],
+  experience: [],
+  education: [],
+  skills: [],
+  projects: [],
 };
 
 export default function ResumeBuilderPage() {
