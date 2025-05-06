@@ -1,6 +1,7 @@
 'use client'; // This file will contain client-side PDF generation logic
 
 import { pdf, Document, Page, Text, View, StyleSheet, Font, Link as PdfLink } from '@react-pdf/renderer';
+import { generateAboutMe } from './utils';
 import type { ResumeData, Experience, Education, Project, Skill } from './types';
 
 // Register Inter font (ensure you have the .ttf files)
@@ -232,6 +233,10 @@ export const generateResumePDF = async (data: ResumeData): Promise<Blob> => {
     skills: data.skills ?? [],
     projects: data.projects ?? [],
   };
+  // If summary is missing, generate it with AI
+  if (!safeData.summary || safeData.summary.trim() === '') {
+    safeData.summary = await generateAboutMe(safeData);
+  }
   const blob = await pdf(<ResumeDocument data={safeData} />).toBlob();
   return blob;
 };
