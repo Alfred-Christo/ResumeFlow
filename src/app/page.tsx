@@ -16,12 +16,12 @@ export default function HomePage() {
           <span className="text-primary font-semibold">ResumeFlow</span> provides the tools you need to create, refine, and evaluate your resume, helping you stand out in today's competitive job market.
         </p>
         <div className="flex justify-center space-x-4">
-          <Button asChild size="lg" className="button-glow text-lg px-8 py-4">
+          <Button asChild size="lg" className="button-glow text-lg px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary/90 transition-colors">
             <Link href="/resume-builder">
               Create Your Resume <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="text-lg px-8 py-4">
+          <Button asChild size="lg" className="button-glow text-lg px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary/90 transition-colors">
             <Link href="/resume-evaluator">
               Evaluate Your Resume <Sparkles className="ml-2 h-5 w-5" />
             </Link>
