@@ -9,10 +9,11 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      // Glassmorphism + shadow + border + hover/active effects
-      "rounded-2xl border border-card/60 bg-card/80 backdrop-blur-md shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-primary/60 hover:bg-card/90 active:scale-[0.98]",
+      // Enhanced: glassmorphism, shadow, border, hover/active, subtle scale, focus ring
+      "rounded-2xl border border-card/60 bg-card/80 backdrop-blur-md shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-primary/60 hover:bg-card/90 active:scale-[0.98] focus-within:ring-2 focus-within:ring-primary/40 group/card overflow-hidden",
       className
     )}
+    tabIndex={0}
     {...props}
   />
 ))
