@@ -109,10 +109,12 @@ export default function ResumeEvaluatorPage() {
   
   if (!isClient) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 animate-fade-in">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">AI Resume Evaluator</CardTitle>
-          <CardDescription>Upload your resume to get AI-powered feedback and suggestions.</CardDescription>
+          <CardDescription className="text-lg text-muted-foreground">
+            Upload your resume to get AI-powered feedback and suggestions.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p>Loading AI Resume Evaluator...</p>
@@ -122,10 +124,10 @@ export default function ResumeEvaluatorPage() {
   }
 
   return (
-    <div className="container mx-auto py-8 max-w-3xl">
-      <Card className="shadow-xl">
+    <div className="container mx-auto py-12 max-w-3xl animate-fade-in">
+      <Card className="card-animate shadow-xl hover:shadow-2xl border-0 bg-white/80 dark:bg-card/80">
         <CardHeader className="text-center">
-          <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-4">
+          <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-4 animate-bounce-in">
             <Sparkles className="h-10 w-10 text-primary" />
           </div>
           <CardTitle className="text-3xl font-bold">AI Resume Evaluator</CardTitle>
@@ -144,7 +146,7 @@ export default function ResumeEvaluatorPage() {
                 className="hidden"
                 accept=".pdf,.docx,.txt"
               />
-              <Button asChild variant="outline" className="flex-grow cursor-pointer">
+              <Button asChild variant="outline" className="flex-grow cursor-pointer button-glow">
                 <label htmlFor="resume-upload" className="flex items-center justify-center w-full">
                   <UploadCloud className="mr-2 h-5 w-5" />
                   {fileName ? 'Change File' : 'Choose File'}
@@ -152,7 +154,7 @@ export default function ResumeEvaluatorPage() {
               </Button>
             </div>
             {fileName && (
-              <div className="flex items-center text-sm text-muted-foreground p-2 border rounded-md bg-muted/50">
+              <div className="flex items-center text-sm text-muted-foreground p-2 border rounded-md bg-muted/50 animate-fade-in">
                 <FileText className="mr-2 h-4 w-4 text-primary" />
                 Selected: {fileName}
               </div>
@@ -160,7 +162,7 @@ export default function ResumeEvaluatorPage() {
           </div>
 
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="animate-fade-in">
               <AlertTitle>Error</AlertTitle>
               <AlertDescription>{error}</AlertDescription>
             </Alert>
@@ -169,7 +171,7 @@ export default function ResumeEvaluatorPage() {
           <Button
             onClick={handleSubmit}
             disabled={!file || isLoading}
-            className="w-full text-lg py-6"
+            className="w-full text-lg py-6 button-glow"
             size="lg"
           >
             {isLoading ? (
@@ -181,12 +183,12 @@ export default function ResumeEvaluatorPage() {
           </Button>
 
           {feedback && (
-            <Card className="mt-8 bg-background shadow-inner">
+            <Card className="mt-8 bg-background shadow-inner card-animate animate-fade-in">
               <CardHeader>
                 <CardTitle className="text-2xl">Evaluation Feedback</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="prose prose-sm max-w-none text-foreground whitespace-pre-wrap p-4 border rounded-md bg-muted/30">
+                <div className="prose prose-sm max-w-none text-foreground whitespace-pre-wrap p-4 border rounded-md bg-muted/30 animate-fade-in">
                   {feedback}
                 </div>
               </CardContent>

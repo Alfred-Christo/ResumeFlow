@@ -4,6 +4,8 @@
 
 body {
   font-family: 'Inter', sans-serif; /* Updated font */
+  /* Subtle background gradient for the whole app */
+  background: linear-gradient(120deg, hsl(180, 60%, 98%) 0%, hsl(180, 60%, 94%) 100%);
 }
 
 @layer base {
@@ -85,4 +87,32 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  /* Section divider for visual separation */
+  .section-divider {
+    @apply my-12 border-t border-muted;
+  }
+}
+
+/* Card glassmorphism and animation */
+.card-animate {
+  animation: cardFadeIn 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(32px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Button glow effect */
+.button-glow {
+  box-shadow: 0 0 0 0 hsl(var(--primary));
+  transition: box-shadow 0.3s;
+}
+.button-glow:hover, .button-glow:focus {
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.15);
+}
+
+/* Enhanced form focus */
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
 }

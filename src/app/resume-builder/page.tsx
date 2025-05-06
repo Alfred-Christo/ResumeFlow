@@ -178,10 +178,9 @@ export default function ResumeBuilderPage() {
     }
   };
 
-
   if (!isClient) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 animate-fade-in">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Create Your Resume</CardTitle>
           <CardDescription>Fill in your details below to generate a professional resume.</CardDescription>
@@ -194,13 +193,13 @@ export default function ResumeBuilderPage() {
   }
 
   return (
-    <div className="container mx-auto py-8 px-4 md:px-0">
+    <div className="container mx-auto py-12 px-4 md:px-0 animate-fade-in">
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="flex flex-col md:flex-row gap-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
+          <div className="flex flex-col md:flex-row gap-12">
             {/* Form Section */}
-            <div className="w-full md:w-1/2 space-y-6">
-              <Card>
+            <div className="w-full md:w-1/2 space-y-8">
+              <Card className="card-animate shadow-lg hover:shadow-2xl border-0 bg-white/80 dark:bg-card/80">
                 <CardHeader>
                   <CardTitle className="text-3xl font-bold">Create Your Resume</CardTitle>
                   <CardDescription>Fill in your details below to generate a professional resume.</CardDescription>
@@ -383,10 +382,10 @@ export default function ResumeBuilderPage() {
 
               <Separator />
               <div className="flex space-x-4">
-                <Button type="submit" size="lg">
+                <Button type="submit" size="lg" className="button-glow">
                   <Download className="mr-2 h-5 w-5" /> Download Resume
                 </Button>
-                 <Button type="button" variant="outline" size="lg" onClick={handlePreview}>
+                 <Button type="button" variant="outline" size="lg" className="button-glow" onClick={handlePreview}>
                   <Eye className="mr-2 h-5 w-5" /> Preview Resume
                 </Button>
               </div>
@@ -394,16 +393,16 @@ export default function ResumeBuilderPage() {
 
             {/* Preview Section */}
             <div className="w-full md:w-1/2 sticky top-24 h-[calc(100vh-7rem)]">
-              <Card className="h-full">
+              <Card className="h-full card-animate shadow-lg border-0 bg-white/80 dark:bg-card/80">
                 <CardHeader>
                   <CardTitle>Resume Preview</CardTitle>
                   <CardDescription>This is a live preview of your resume. Click "Preview Resume" to update.</CardDescription>
                 </CardHeader>
-                <CardContent className="h-[calc(100%-8rem)]">
+                <CardContent className="h-[calc(100%-8rem)] flex items-center justify-center">
                   {resumePreviewUrl ? (
                     <iframe src={resumePreviewUrl} className="w-full h-full border rounded-md" title="Resume Preview" />
                   ) : (
-                    <div className="w-full h-full border rounded-md flex items-center justify-center bg-muted">
+                    <div className="w-full h-full border rounded-md flex items-center justify-center bg-muted/40 animate-fade-in">
                       <p className="text-muted-foreground">Click "Preview Resume" to see your document here.</p>
                     </div>
                   )}
